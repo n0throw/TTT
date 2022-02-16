@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v="clr-namespace:System;assembly=mscorlib">
+    <v:String x:Key="L_Title">Tic Tac Toe</v:String>
+    <v:String x:Key="L_Language">English</v:String>
+    <v:String x:Key="L_Start">Start game</v:String>
+    <v:String x:Key="L_EndGame">End Game</v:String>
+</ResourceDictionary>

@@ -1,0 +1,61 @@
+﻿<Page x:Class="TicTacToeMVVM.Game"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TicTacToeMVVM"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="{DynamicResource L_Title}">
+
+    <Grid>
+        <Button HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" Height="50" Command="{Binding SetMainMenuPage}">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border CornerRadius="15" Background="#463190">
+                        <Path Stroke="White" StrokeThickness="0.2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="9" ScaleY="9" />
+                                    <TranslateTransform X="-7" Y="-8" />
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                            <Path.Data>
+                                <GeometryGroup>
+                                    <PathGeometry Figures="M 1,2.5 2,1.5 2,2 4,2 4,3 2,3 2,3.5, 1,2.5"/>
+                                </GeometryGroup>
+                            </Path.Data>
+                        </Path>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Grid Width="{Binding ElementName=GameGrid, Path=ActualWidth}" Height="{Binding ElementName=GameGrid, Path=ActualHeight}" Margin="{Binding ElementName=GameGrid, Path=Margin}" Panel.ZIndex="-1">
+            <TextBlock Text="{DynamicResource L_EndGame}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50"/>
+        </Grid>
+        <Grid x:Name="GameGrid" Width="{Binding ElementName=GameGrid, Path=ActualHeight}" Margin="142,0,142,0" Visibility="{Binding GameData.GameGridVisibility}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Grid.Column="0" Grid.Row="0" Content="{Binding GameData.Map[0]}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="90" Command="{Binding GameData.Move}" CommandParameter="0" BorderThickness="3, 3, 1.5, 1.5"/>
+            <Button Grid.Column="1" Grid.Row="0" Content="{Binding GameData.Map[1]}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="90" Command="{Binding GameData.Move}" CommandParameter="1" BorderThickness="1.5, 3, 1.5, 1.5"/>
+            <Button Grid.Column="2" Grid.Row="0" Content="{Binding GameData.Map[2]}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="90" Command="{Binding GameData.Move}" CommandParameter="2" BorderThickness="1.5, 3, 3, 1.5"/>
+
+            <Button Grid.Column="0" Grid.Row="1" Content="{Binding GameData.Map[3]}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="90" Command="{Binding GameData.Move}" CommandParameter="3" BorderThickness="3, 1.5, 1.5, 1.5"/>
+            <Button Grid.Column="1" Grid.Row="1" Content="{Binding GameData.Map[4]}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="90" Command="{Binding GameData.Move}" CommandParameter="4" BorderThickness="1.5, 1.5, 1.5, 1.5"/>
+            <Button Grid.Column="2" Grid.Row="1" Content="{Binding GameData.Map[5]}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="90" Command="{Binding GameData.Move}" CommandParameter="5" BorderThickness="1.5, 1.5, 3, 1.5"/>
+
+            <Button Grid.Column="0" Grid.Row="2" Content="{Binding GameData.Map[6]}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="90" Command="{Binding GameData.Move}" CommandParameter="6" BorderThickness="3, 1.5, 1.5, 3"/>
+            <Button Grid.Column="1" Grid.Row="2" Content="{Binding GameData.Map[7]}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="90" Command="{Binding GameData.Move}" CommandParameter="7" BorderThickness="1.5, 1.5, 1.5, 3"/>
+            <Button Grid.Column="2" Grid.Row="2" Content="{Binding GameData.Map[8]}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="90" Command="{Binding GameData.Move}" CommandParameter="8" BorderThickness="1.5, 1.5, 3, 3"/>
+        </Grid>
+        <Button Content="{Binding GameData.PlayerMove}" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="70" Height="70" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="50"/>
+    </Grid>
+</Page>
